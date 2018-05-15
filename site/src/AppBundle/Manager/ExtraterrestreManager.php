@@ -88,4 +88,9 @@ class ExtraterrestreManager
         $this->em->flush();
         return;
     }
+
+    public function editUser()
+    {
+        $this->em->flush();
+    }
 }
