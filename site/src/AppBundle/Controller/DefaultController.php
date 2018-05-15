@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Extraterrestre;
+use AppBundle\Form\ExtraterrestreType;
 use AppBundle\Manager\ExtraterrestreManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -21,10 +22,9 @@ class DefaultController extends Controller
 
     /**
      * @Route("/", name="homepage")
-     * @param Request $request
      * @return Response
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         return $this->render('default/index.html.twig', []);
     }
@@ -75,5 +75,23 @@ class DefaultController extends Controller
     {
         $this->manager->deleteFriend($userId, $this->get('security.token_storage')->getToken()->getUser());
         return $this->redirect($this->generateUrl('homepage'));
+    }
+
+    /**
+     * @Route("/edit", name="edit_page")
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    public function editAction(Request $request)
+    {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $form = $this->createForm(ExtraterrestreType::class, $user);
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+        {
+            $this->manager->editUser();
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+        return $this->render('default/edit.html.twig', [ 'form' => $form->createView()  ]);
     }
 }

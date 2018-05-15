@@ -15,6 +15,7 @@
                                <li>famille : {{ app.user.famille }}</li>
                                <li>race : {{ app.user.race }}</li>
                                <li>nourriture : {{ app.user.nourriture }}</li>
+                               <a href="{{ path('edit_page') }}" }}><button class="btn btn-success">Modifier</button></a>
                            </ul>
                        </div>
                         <div class="col-md-8">
@@ -39,7 +40,7 @@
                                 </button>
                             </div>
                        </div>
-                        <div class="col-md-10">
+                        <div class="col-md-12">
                             <input type="text" ng-model="query" placeholder="Search">
                             <table ng-controller="UserCtrl" class="table table-striped">
                                 <thead>
