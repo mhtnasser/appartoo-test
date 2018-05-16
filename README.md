@@ -16,7 +16,7 @@ L'installation est très simple.
 
 1. Placez vous sur le projet 
 ~~~
-- cd AlloFlix
+- cd appartoo-test
 ~~~
 2. Exécutez le ficher docker compose
 ~~~
