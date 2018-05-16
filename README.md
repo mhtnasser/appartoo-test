@@ -33,7 +33,7 @@ L'installation est très simple.
 -  php bin/console doctrine:fixtures:load
 ~~~
 
-Une fois les conteneurs prêts et démarrés, ouvrez l'url http://localhost:8082 dans le navigateur. 
+Une fois les conteneurs prêts et démarrés, ouvrez l'url http://localhost:8082/app_dev.php/ dans le navigateur. 
 
 
 ## Base de donnée
